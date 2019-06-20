@@ -1,0 +1,285 @@
+<!-- menu html -->
+<div class="container">
+    <div class="menu-wrap optiscroll" id="menuWrap" style="display:none">
+        <nav class="menu">
+
+            <!-- 个人简介 -->
+            <div class="introduce-box">
+                <div class="introduce-head">
+                    <div class="introduce-via" id="menuBlogAvatar"></div>
+                </div>
+                <div id="introduce"></div>
+            </div>
+
+            <!-- 导航 -->
+            <div class="nav-title"></div>
+            <div class="icon-list">
+                <ul>
+                    <li><a href="https://www.cnblogs.com/JaJian/" target="_self">首页</a></li>       
+                    <li><a href="https://msg.cnblogs.com/send/JaJian" target="_blank">联系</a></li>
+                    <li><a href="https://i.cnblogs.com/EditPosts.aspx?opt=1" target="_blank">新随笔</a></li>
+                    <li><a href="https://i.cnblogs.com/" target="_blank">管理</a></li>
+                    <!-- <li><a href="https://www.cnblogs.com/" target=_blank">博客园</a></li> -->		
+                    <li><a href="https://github.com/noobgod" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.cnblogs.com/JaJian/tag" target="_blank">我的标签</a></li>
+                </ul>
+            </div>
+
+            <!-- 随笔分类 -->
+            <div class="classify-title"></div>
+            <div class="m-icon-list" id="sb-classify"></div>
+			
+	    <!-- 积分排名 -->
+            <div class="scorerank-title"></div>
+            <div class="m-icon-list" id="sb-scorerank"></div>
+
+	    <!-- 我的标签 -->
+            <!-- <div class="topTag-title"></div> -->
+            <!-- <div class="m-icon-list" id="sb-topTag"></div> -->
+			
+            <!-- 随笔档案 -->
+            <!-- <div class="record-title"></div> -->
+            <!-- <div class="m-icon-list" id="sb-record"></div> -->
+
+			<!-- 推荐排行 -->
+            <div class="topDiggPosts-title"></div>
+            <div class="m-icon-list" id="sb-topDiggPosts"></div>
+			
+            <!-- 阅读排行 -->
+            <div class="topview-title"></div>
+            <div class="m-icon-list" id="sb-topview"></div>
+			
+			<!-- 评论排行 -->
+            <div class="topFeedbackPosts-title"></div>
+            <div class="m-icon-list" id="sb-topFeedbackPosts"></div>
+
+        </nav>
+        <button class="close-button" id="close-button">Close Menu</button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button" id="open-button">MENU</button>
+    <div class="content-wrap" id="content-wrap"></div><!-- /content-wrap -->
+</div>
+<!-- menu html end -->
+
+<!-- banner html -->
+<div class="main-header">
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title cssf79d1841e1b313" id="homeTopTitle"></h1>
+            <h2 class="page-description" id="hitokoto"></h2>
+            <h3 class="page-author" id="hitokotoAuthor"></h3>
+        </div>
+    </div>
+    <a class="scroll-down" href="javascript:void(0);" data-offset="-45">
+        <span class="hidden">Scroll Down</span>
+        <i class="scroll-down-icon iconfont icon-fanhui"></i>
+    </a>
+    <canvas id="myTopCanvas" style=" position: absolute;margin: auto;width: 100%;height: 100%;top: 0;bottom: 0;left: 0;right: 0;"></canvas>
+</div>
+<!-- banner html end -->
+
+<!-- global var -->
+<script type="text/javascript">
+
+    window.cnblogsConfig = {
+
+        // ---- 基础信息配置 ----
+        blogUser      : "JaJian`博кē", // 博主名称
+        blogAvatar    : "http://images.cnblogs.com/cnblogs_com/jajian/1073550/o_20190118203430.png", // 用户头像URL
+        blogStartDate : "2017-05-09", // 入园时间，年-月-日，入园时间查看方法：鼠标停留园龄时间上，会显示入园时间
+
+        // ---- 网站配置 ----
+        webpageTitleOnblur        : "(◍´꒳`◍) Hi, JaJian", // 当前页失去焦点，页面title显示文字
+        webpageTitleOnblurTimeOut : 500, // 当前页失去焦点，页面title变化，延时时间，单位毫秒
+        webpageTitleFocus         : "(*´∇｀*) 欢迎回来！", // 当前页获取焦点，页面title显示文字，显示后延时恢复原title
+        webpageTitleFocusTimeOut  : 1000, // 当前页获取焦点，页面title变化，延时时间，单位毫秒
+        webpageIcon : "https://files.cnblogs.com/files/jajian/blog_logo.gif", // 网站图标
+
+        // ---- 进度条配置 ----
+        progressBar: {
+            id      : 'top-progress-bar',
+            color   : '#77b6ff',
+            height  : '2px',
+            duration: 0.2
+        },
+
+        // ---- Loading配置 ----
+        loading: {
+            rebound: {
+                tension: 16,
+                friction: 5
+            },
+            spinner: {
+                id: 'spinner',
+                radius: 90,
+                sides: 3,
+                depth: 4,
+                colors: {
+                    background: '#f0f0f0',
+                    stroke: '#272633',
+                    base: null,
+                    child: '#272633'
+                },
+                alwaysForward: true, // When false the spring will reverse normally.
+                restAt: 0.5,         // A number from 0.1 to 0.9 || null for full rotation
+                renderBase: false
+            }
+        },
+
+        // ---- 主页配置 ----
+        homeTopImg    : "//images.cnblogs.com/cnblogs_com/jajian/1073550/o_312be0e5cae93d373d362d589f434215.jpg", // 主页图片Url，推荐尺寸>= 1920*1080
+        homeBannerText: "", // 主页头图上的标语，设置此选项会固定显示文字，默认为空，每日自动获取一句。
+        homeTopAnimation: { // 主页头图动画设置
+            radius: 15,
+            density: 0.2,
+            color: 'rgba(255,255,255, .2)', // 颜色设置，“random” 为随机颜色
+            clearOffset: 0.3
+        },
+
+        // ---- 随笔页配置 ----
+        essayTopImg: "http://images.cnblogs.com/cnblogs_com/jajian/1073550/o_brown_wood.jpg", // 随笔页图片Url
+        essayTopAnimationColors: [ // 随笔页图片动效颜色
+            '#96EDA6', '#5BC6A9',
+            '#38668C', '#374D84',
+            '#BED5CB', '#62ADC6',
+            '#8EE5DE', '#304E7B'
+        ],
+        essaySuffix:{ // 随笔后缀处配置
+            aboutHtml    : '沪漂一员，互联网架构方向，如有问题探讨可以<a href="http://msg.cnblogs.com/msg/send/jajian" target="_blank">直接私信</a>我，亦可下方留言。', // 关于博主，不配置使用默认
+            copyrightHtml: "本博客的所有原创文章均会同步更新到我的公众号【JaJian】上，喜欢的可以左边扫码关注。码字辛苦，尊重原创。", // 版权声明，不配置使用默认
+            supportHtml  : ""  // 声援博主，不配置使用默认
+        },
+
+        // ---- 页脚配置 ----
+        bottomBlogroll: [ // 友情链接，[[链接名,链接]....]
+            ["loveincode",'https://www.cnblogs.com/loveincode/'],
+            ["ZYL的博客",'https://zyl.me/blog'],
+            ["申请坑位", 'https://msg.cnblogs.com/send/JaJian'],
+        ],
+        bottomText: {  // 页脚标语
+            left : "事实并非理所当然", // 图标左侧文字
+            right: "世界总是欲盖弥彰"  // 图标右侧文字
+        }
+
+    };
+
+    /**
+     * 资源文件配置
+     * source:"github" versions 处为GitHub提交版本哈希值 根据版本加载代码 https://github.com/BNDong/Cnblogs-Theme-SimpleMemory/commits/master
+     * source:"cnblogs" 从博客园文件加载代码，可以不配置版本号，本人博客园文件不会更新了（操作实在太麻烦了），如有需求可以从github上挡下来最新代码，保存到自己的博客园文件中进行加载
+     */
+    var staticFileSetting = {
+        source   : 'cnblogs',
+        versions : 'b715cfe15b6d3b4c0243423f87b4e51fd803bd87', // 版本号
+    };
+
+    // start cache
+    $.ajaxSetup({cache: true});
+
+    // load loadingJs
+    $.getScript(getJsDelivrUrl('loading.js'), function () {
+
+        // Loading start
+        demo.initRebound();
+        demo.initSpinner();
+        demo.spinner.init(demo.spring, true);
+
+        $.getScript(getJsDelivrUrl('require.min.js'), function () {
+
+            $.getScript(getJsDelivrUrl('config.v1.8.js'), function () {
+
+                var staticResource = [
+                    'optiscroll',
+                    'ToProgress',
+                    'rotate',
+                    'snapSvg',
+                    'classie',
+                    'main4',
+                    'tools',
+                ];
+                require(staticResource, function() {
+
+                    require(['base'], function() {
+
+                        var base = new Base;
+                        base.init();
+                    });
+                });
+
+            });
+
+        });
+    });
+
+    /**
+     * 文件地址
+     * @param file
+     * @param directory 文件目录名称
+     * @returns {string}
+     */
+    function getJsDelivrUrl(file, directory) {
+        file = setFileNameMin(file, directory);
+
+        switch (staticFileSetting.source) {
+
+            case 'github': // 注意：此处为GitHub加载源，如果需要加载自己分支的代码，修改此处URL，URL规则详见：https://www.jsdelivr.com/
+                return 'https://cdn.jsdelivr.net/gh/noobgod/Cnblogs-Theme-SimpleMemory@'+staticFileSetting.versions+'/' + (file ? file : '');
+                break;
+
+            case 'cnblogs': // 注意：此处为博客园加载源，加载本人博客文件为老版本。本人博客园文件停止更新，如果需要可以修改至自己博客园文件
+                return 'https://blog-static.cnblogs.com/files/noobgod/'+file;
+                break;
+
+            default:
+                return '';break;
+        }
+    }
+
+    /**
+     * 文件名
+     * @param file
+     * @param directory 文件目录名称
+     * @returns {*}
+     */
+    function setFileNameMin(file, directory) {
+        if (typeof file == 'undefined') return '';
+
+        var suffix  = null;
+        var fileArr = file.split('.');
+
+        if (fileArr.length > 0 && $.inArray(fileArr[(fileArr.length -1)], ['js', 'css']) != -1) {
+            suffix    = fileArr.pop();
+            directory = suffix;
+        }
+
+        switch (staticFileSetting.source) {
+
+            case 'github':
+
+                if (typeof file !== 'undefined' && file.search('.min') == -1) fileArr.push('min');
+
+                if (suffix != null) fileArr.push(suffix);
+
+                return (typeof directory !== 'undefined' ? (directory + '/' + fileArr.join('.')) : (fileArr.join('.')));
+                break;
+
+            case 'cnblogs':
+                if (suffix != null) fileArr.push(suffix);
+                return fileArr.join('.');
+                break;
+
+            default:
+                return file;break;
+        }
+    }
+</script>
+<!-- global var end -->
+
+<span id="amazingStat">
+<img border="0" title='访问量' src="http://cc.amazingcounters.com/counter.php?i=3227590&c=9683083" alt="AmazingCounters.com" style="opacity: 0.5; margin-left: 7px;cursor: pointer; width: 60px;">
+</span>
